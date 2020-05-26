@@ -74,16 +74,16 @@ export default {
 .flip{
   display:inline-block;
   position: relative;
-  width:45%;
+  width:47%;
   height:200px;
   line-height: 200px;
-  font-size: 120px;
+  font-size: 150px;
   color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   font-family: 'Roboto', sans-serif;
   @include mobile{
-    font-size: 90px;
+    font-size: 100px;
   }
   
 }
@@ -103,7 +103,7 @@ export default {
 .flip .digital:before {
   top: 0;
   bottom: 50%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* after為下半張 */
 .flip .digital:after {

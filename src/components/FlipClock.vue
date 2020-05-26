@@ -114,7 +114,9 @@ export default {
       vm.$refs.flipperSecond2,      
     ];
     vm.init();
-    vm.run();
+    setTimeout(() => {
+      vm.run();
+    }, 600);
   }
   
 }
@@ -138,8 +140,11 @@ export default {
 .card-wrapper{
   display:flex;
   justify-content: space-evenly;
-  width:75%;
+  width:40%;
   height:50%;
+  @include pad{
+    width: 70%;
+  }
   @include mobile{
     width:100%;
   }
