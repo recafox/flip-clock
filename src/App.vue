@@ -15,7 +15,8 @@ export default {
 }
 </script>
 
-<style>
+<style style='scss'>
+
 #app{
   width:100%;
   height:600px;

@@ -69,19 +69,8 @@ export default {
 </script>
 
 <style lang='scss'>
-$green: #4FA685;
-$gray: #585757;
-$perspective: 400px;
-@mixin mobile {
-  @media(max-width: 414px) {
-    @content;
-  }
-}
-@mixin pad {
-  @media(max-width: 769px) {
-    @content;
-  }
-}
+@import '../assets/all.scss';
+
 .flip{
   display:inline-block;
   position: relative;
@@ -92,7 +81,7 @@ $perspective: 400px;
   color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Roboto', sans-serif;
   @include mobile{
     font-size: 90px;
   }

@@ -1,0 +1,14 @@
+$green: #4FA685;
+$gray: #585757;
+$perspective: 440px;
+
+@mixin mobile {
+  @media(max-width: 414px) {
+    @content;
+  }
+}
+@mixin pad {
+  @media(max-width: 769px) {
+    @content;
+  }
+}

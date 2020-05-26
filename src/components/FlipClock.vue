@@ -121,19 +121,8 @@ export default {
 </script>
 
 <style lang='scss'>
-$green: #4FA685;
-$gray: #585757;
+@import '../assets/all.scss';
 
-@mixin mobile {
-  @media(max-width: 414px) {
-    @content;
-  }
-}
-@mixin pad {
-  @media(max-width: 769px) {
-    @content;
-  }
-}
 .FlipClock{
   width: 90%;
   height:100%;
@@ -159,7 +148,6 @@ $gray: #585757;
     flex-direction: column;
     align-items: center;
     width:50%;
-    height:300px;
     background: $gray;
     margin:1rem;
     @include mobile{
@@ -177,8 +165,10 @@ $gray: #585757;
       font-family: 'Microsoft JhengHei', sans-serif;
       font-size: 24px;
       line-height: 24px;
-      margin: 0;
-      padding: 0;
+      margin-top: 1rem;;
+      p{
+        margin:0;
+      }
     }
   }
 }
