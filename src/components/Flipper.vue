@@ -1,5 +1,5 @@
 <template>
-  <div class='flip down' :class='goSwitch'>
+  <div class='flip down' :class='{"go": isFlipping===true}'>
     <div class='digital front' :class='_textClass(frontTextFromData)'></div>
     <div class='digital back' :class='_textClass(backTextFromData)'></div>
   </div>
@@ -20,18 +20,9 @@ export default {
       backTextFromData: 0,
     }
   },
-  computed: {
-    goSwitch(){
-      const vm = this;
-      if(!vm.isFlipping){
-        return 'go';
-      }
-      return '';
-    }
-  },
   methods: {
     _textClass(number) {
-      if(number) {
+      if (number) {
         return `number${number}`
       }
       return 'number0';
@@ -46,20 +37,20 @@ export default {
     },
     flipDown(front, back) {
       const vm = this;
-      if(vm.isFlipping){
+      if(vm.isFlipping) {
         return false;
       }
+      vm.isFlipping = true;
       vm.frontTextFromData = front;
       vm.backTextFromData = back;
-      vm.isFlipping = true;
       setTimeout(() => {
         vm.isFlipping = false;
         vm.frontTextFromData = back;
-      }, vm.duration);
+      }, 600);
 
     }
   },
-  created() {
+  mounted() {
     const vm = this;
     vm.frontTextFromData = vm.frontText;
     vm.backTextFromData = vm.backText;
@@ -83,6 +74,8 @@ export default {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   @include mobile{
+    height:170px;
+    line-height: 170px;
     font-size: 100px;
   }
   

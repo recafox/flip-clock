@@ -64,20 +64,19 @@ export default {
       let timeStr = vm.formatTime(vm.now);
       for( let i = 0; i < vm.flipObjs.length; i++) {
         vm.flipObjs[i].setFront(timeStr[i]);
-      }
-      
+      }    
     },
     formatTime(time) {
       const vm = this;
       const secondToDay = 86400;
       const secondToHour = 3600;
       const secondToMinute = 60;
-      let leftDay = vm.padLeftZero(parseInt(time / secondToDay).toString());
+      let leftDay = vm.padLeftZero( parseInt(time / secondToDay).toString(), 10 );
       let tempHour = time % secondToDay;
-      let leftHour = vm.padLeftZero(parseInt(tempHour / secondToHour).toString());
-      let tempMin = time % (leftDay*secondToDay + leftHour*secondToHour);
-      let leftMinute =vm.padLeftZero(parseInt(tempMin / secondToMinute).toString());
-      let leftSecond = vm.padLeftZero((time % (leftDay*secondToDay + leftHour*secondToHour + leftMinute*secondToMinute)).toString());
+      let leftHour = vm.padLeftZero( parseInt(tempHour / secondToHour).toString(), 10 );
+      let tempMin = time % ( leftDay*secondToDay + leftHour*secondToHour );
+      let leftMinute =vm.padLeftZero( parseInt(tempMin / secondToMinute).toString(), 10 );
+      let leftSecond = vm.padLeftZero( (time % (leftDay*secondToDay + leftHour*secondToHour + leftMinute*secondToMinute)).toString(), 10);
       return `${leftDay}${leftHour}${leftMinute}${leftSecond}`;
     },
     run() {
@@ -86,7 +85,7 @@ export default {
         let nowTimeStr = vm.formatTime(vm.now);
         let nextTimeStr = vm.formatTime(vm.now - 1);
         for(let i = 0; i < vm.flipObjs.length; i++) {
-          if (nowTimeStr[i] === nextTimeStr[i]){
+          if (nowTimeStr[i] === nextTimeStr[i]) {
             continue;
           }
           vm.flipObjs[i].flipDown(
@@ -95,6 +94,9 @@ export default {
           )
         }
         vm.now -= 1;
+        if(nextTimeStr.split('').every((num) => num<=0)){
+          clearInterval(vm.timer);
+        }
       }, 1000);
     },
     padLeftZero(str) {
@@ -114,9 +116,7 @@ export default {
       vm.$refs.flipperSecond2,      
     ];
     vm.init();
-    setTimeout(() => {
-      vm.run();
-    }, 600);
+    vm.run();
   }
   
 }
@@ -127,11 +127,9 @@ export default {
 
 .FlipClock{
   width: 90%;
-  height:100%;
   display:flex;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
   @include pad {
     flex-direction: column;
   }
@@ -155,8 +153,10 @@ export default {
     width:50%;
     background: $gray;
     margin:1rem;
+    height:270px;
     @include mobile{
       margin: 0.3rem;
+      height:250px;
     }
     .card__number{
       display:flex;
