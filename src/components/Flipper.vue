@@ -65,10 +65,10 @@ export default {
 .flip{
   display:inline-block;
   position: relative;
-  width:47%;
+  width:50%;
   height:200px;
   line-height: 200px;
-  font-size: 150px;
+  font-size: 120px;
   color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   text-align: center;
@@ -76,7 +76,7 @@ export default {
   @include mobile{
     height:170px;
     line-height: 170px;
-    font-size: 100px;
+    font-size: 90px;
   }
   
 }
@@ -96,7 +96,6 @@ export default {
 .flip .digital:before {
   top: 0;
   bottom: 50%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* after為下半張 */
 .flip .digital:after {
@@ -112,6 +111,7 @@ export default {
 .flip.down .back:after{
   z-index: 2;
   transform-origin: 50% 0;
+  -webkit-transform: perspective($perspective) rotate(180deg);
   transform: perspective($perspective) rotate(180deg);
 }
 
@@ -123,7 +123,6 @@ export default {
 .flip.down.go .front:before {
   transform-origin: 50% 100%;
   animation: frontFlipDown 0.6s ease-in-out both;
-  box-shadow: 0 -2px 6px rgba(255, 255, 255, 0.3);
   backface-visibility: hidden;
 }
 
@@ -134,18 +133,22 @@ export default {
 
 @keyframes frontFlipDown {
   0% {
+    -webkit-transform: perspective($perspective) rotateX(0deg); 
     transform: perspective($perspective) rotateX(0deg);
   }
   100% {
+    -webkit-transform:perspective($perspective) rotateX(180deg);
     transform:perspective($perspective) rotateX(180deg);
   }
 }
 
 @keyframes backFlipDown {
   0% {
+    -webkit-transform: perspective($perspective) rotateX(180deg);
     transform: perspective($perspective) rotateX(180deg);
   }
   100% {
+    -webkit-transform:perspective($perspective) rotateX(0deg);
     transform:perspective($perspective) rotateX(0deg);
   }
 }

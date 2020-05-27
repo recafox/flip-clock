@@ -15,7 +15,8 @@ export default {
 }
 </script>
 
-<style style='scss'>
+<style lang='scss'>
+@import './assets/all.scss';
 
 #app{
   position:absolute;
@@ -26,5 +27,11 @@ export default {
   display:flex;
   justify-content: center;
   align-items: center;
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  @include pad{
+    background-size: auto 100%;
+  }
 }
 </style>

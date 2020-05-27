@@ -138,7 +138,7 @@ export default {
 .card-wrapper{
   display:flex;
   justify-content: space-evenly;
-  width:40%;
+  width:35%;
   height:50%;
   @include pad{
     width: 70%;
